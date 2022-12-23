@@ -18,4 +18,4 @@ jobs:
         with:
           node-version: 19.x
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn install
