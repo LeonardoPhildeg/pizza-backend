@@ -22,7 +22,7 @@ class CreateCategoryService {
 
     const category = await prismaClient.category.create({
       data: {
-        name: name
+        name: name.toLocaleLowerCase()
       },
       select: {
         id: true,
