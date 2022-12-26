@@ -22,11 +22,11 @@ class AuthUserService {
     if(!passwordMatch) {
       throw new Error("User/Password incorrect")
     }
-
+    const secret = process.env.JWT_SECRET as string;
     const token = sign({
       name: user.name,
       email: user.email,
-    }, process.env.JWT_SECRET,
+    }, secret,
     {
       subject: user.id,
       expiresIn: "30d"

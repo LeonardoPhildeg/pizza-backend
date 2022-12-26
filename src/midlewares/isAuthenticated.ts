@@ -14,10 +14,11 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
   }
 
   const [, token] = authToken.split(" ");
+  const secret = process.env.JWT_SECRET as string;
   try{
     const { sub } = verify(
       token,
-      process.env.JWT_SECRET
+      secret
     ) as Payload
     
     // Recover token id and put it on user_id
