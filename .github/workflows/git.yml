@@ -19,5 +19,3 @@ jobs:
           node-version: 19.x
       - name: Install dependencies
         run: yarn install
-      - name: Run unit tests
-        run: yarn test
