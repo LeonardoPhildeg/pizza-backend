@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +20,11 @@ jobs:
         run: yarn install
       - name: Run unit tests
         run: yarn test
+
+  api-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run api tests on docker environment
+        run: docker-compose up --exit-code-from test
+
+    

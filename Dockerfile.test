@@ -1,0 +1,27 @@
+FROM bitnami/git:latest as clone
+
+WORKDIR /app
+RUN git clone https://github.com/LeonardoPhildeg/pizza-backend-test.git
+
+
+
+# FROM alpine as wait
+# CMD /wait
+
+
+
+FROM maven:3.6-openjdk-17-slim as build
+
+WORKDIR /app
+COPY --from=clone /app/pizza-backend-test /app
+RUN mvn -f /app/pom.xml clean install
+
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
+RUN chmod +x /wait
+
+# CMD [ "mvn", "test" ]
+CMD /wait && mvn test
+
+VOLUME /app/target
+
+EXPOSE 8000

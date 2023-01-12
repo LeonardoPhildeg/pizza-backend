@@ -17,7 +17,6 @@ class CreateUserService {
         email: email
       }
     })
-    console.log(userAlreadyExists)
     if (userAlreadyExists) {
       throw new Error("User already exists")
     }
@@ -31,7 +30,6 @@ class CreateUserService {
         password: passwordHash
       }, 
       select: {
-        id: true,
         name: true,
         email: true
       }
