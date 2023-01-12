@@ -14,7 +14,7 @@ FROM maven:3.6-openjdk-17-slim as build
 
 WORKDIR /app
 COPY --from=clone /app/pizza-backend-test /app
-RUN mvn -f /app/pom.xml clean install
+RUN mvn -f /app/pom.xml clean install -DskipTests
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
 RUN chmod +x /wait
