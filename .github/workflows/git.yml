@@ -11,19 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
         with:
           node-version: 19.x
+
       - name: Install dependencies
         run: yarn install
+
       - name: Run unit tests
         run: yarn test
 
   api-test:
     runs-on: ubuntu-latest
+    
     steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
       - name: Run api tests on docker environment
         run: docker-compose up --exit-code-from test
 
