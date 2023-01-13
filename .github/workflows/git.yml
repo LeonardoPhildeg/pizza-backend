@@ -34,7 +34,8 @@ jobs:
 
       - name: Run api tests on docker environment
         env:
-          DATABASE_URL: postgresql://postgres:pizza-postgres@pizza-db:5432/pizza-db?schema=public
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+        run: echo "--------- env.DATABASE_URL ---------"
         run: docker-compose up --exit-code-from test
 
     
