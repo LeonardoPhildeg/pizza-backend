@@ -28,11 +28,12 @@ jobs:
 
   api-test:
     runs-on: ubuntu-latest
-    env: 
-      DATABASE_URL: postgresql://postgres:pizza-postgres@pizza-db:5432/pizza-db?schema=public
-      BASE_URI: http://pizza-api:3333
-
     steps:
+      - name: create env file
+        run: |
+          touch .env
+          echo DATABASE_URL=postgresql://postgres:pizza-postgres@pizza-db:5432/pizza-db?schema=public >> .env
+          echo BASE_URI=http://pizza-api:3333 >> .env
       - name: Checkout
         uses: actions/checkout@v1
 
