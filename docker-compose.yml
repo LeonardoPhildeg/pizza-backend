@@ -35,4 +35,3 @@ services:
       - "8000:8000"
     environment:
       - WAIT_HOSTS= pizza-db:5432, pizza-api:3333
-      - BASE_URI=http://pizza-api:3333
