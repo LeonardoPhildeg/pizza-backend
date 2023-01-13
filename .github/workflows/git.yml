@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  DATABASE_URL: '${{ vars.DATABASE_URL }}'
 
 jobs:
   build:
@@ -35,7 +33,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Create .env file for docker-compose
+        run: |
+          touch .env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+
       - name: Run api tests on docker environment
-        run: docker-compose up -e DATABASE_URL=$DATABASE_URL --exit-code-from test
+        run: docker-compose up --exit-code-from test
 
     
