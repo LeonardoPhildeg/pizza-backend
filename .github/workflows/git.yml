@@ -33,11 +33,11 @@ jobs:
         uses: actions/checkout@v1
 
       - name: ENV VARIABLE
-        run: echo "--------- env.DATABASE_URL ---------"
+        run: echo "--------- ${{ vars.DATABASE_URL }} ---------"
 
       - name: Run api tests on docker environment
         env:
-          DATABASE_URL: ${{ env.DATABASE_URL }}
+          DATABASE_URL: ${{ vars.DATABASE_URL }}
         run: docker-compose up --exit-code-from test
 
     
