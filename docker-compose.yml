@@ -20,8 +20,8 @@ services:
       - postgres
     ports:
       - "3333:3333"
-    environment:
-      - DATABASE_URL=postgresql://postgres:pizza-postgres@pizza-db:5432/pizza-db?schema=public
+    # environment:
+    #   - DATABASE_URL=postgresql://postgres:pizza-postgres@pizza-db:5432/pizza-db?schema=public
 
   test:
     container_name: pizza-test
