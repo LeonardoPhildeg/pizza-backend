@@ -22,7 +22,6 @@ services:
       - "3333:3333"
     environment:
       - DATABASE_URL=postgresql://postgres:pizza-postgres@pizza-db:5432/pizza-db?schema=public
-      - BASE_URI=http://pizza-api:3333
 
   test:
     container_name: pizza-test
@@ -35,4 +34,5 @@ services:
     ports:
       - "8000:8000"
     environment:
-      WAIT_HOSTS: pizza-db:5432, pizza-api:3333
+      - WAIT_HOSTS= pizza-db:5432, pizza-api:3333
+      - BASE_URI=http://pizza-api:3333
