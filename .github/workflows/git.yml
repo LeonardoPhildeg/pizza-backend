@@ -37,6 +37,9 @@ jobs:
         run: |
           touch .env
           echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+          echo API_HOST=${{ secrets.API_HOST }} >> .env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
 
       - name: Run api tests on docker environment
         run: docker-compose up --exit-code-from test
